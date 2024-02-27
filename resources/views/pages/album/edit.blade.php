@@ -5,7 +5,7 @@
 @section('content')
     <h1><strong>Update Album</strong></h1>
 
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="container">

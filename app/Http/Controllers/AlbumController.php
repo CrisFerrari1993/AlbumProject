@@ -63,13 +63,17 @@ class AlbumController extends Controller
     public function update(Request $request, $id){
 
         $data = $request -> all();
+
+        $img = $data['album_img'];
+        
+        $img_path = Storage :: disk('public') -> put('images', $img);
         
 
         $album = Album :: find($id);
 
         $album -> name = $data['name'];
         $album -> publications_date = $data['publications_date'];
-        $album -> album_img = $data['album_img'];
+        $album -> album_img = $img_path;
         $album -> rating = $data['rating'];
 
         $album -> artist() -> associate($data['artist_id']);
